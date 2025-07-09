@@ -11,7 +11,7 @@ def optimize_schedule(data: ScheduleRequest) -> ScheduleResponse:
 
     employee_hours = {emp.id: 0 for emp in data.employees}
     employee_schedule = {emp.id: [] for emp in data.employees}
-    shifts_per_day = defaultdict(lambda: defaultdict(int))  # {emp_id: {date: count}}
+    shifts_per_day = defaultdict(lambda: defaultdict(int))  
 
     for shift in data.shifts:
         shift_start = datetime.fromisoformat(shift.start_time)
@@ -79,7 +79,7 @@ def optimize_schedule(data: ScheduleRequest) -> ScheduleResponse:
 
     constraint_violations = len(unassigned)
     objective_value = 100.0 - constraint_violations * 5
-    optimization_time_ms = 1200  # simulated
+    optimization_time_ms = 1200  
 
     response = ScheduleResponse(
         success=True,
